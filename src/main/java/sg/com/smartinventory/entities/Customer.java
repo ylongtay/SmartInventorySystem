@@ -61,8 +61,10 @@ public class Customer {
   private String email;
 
   @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-
   private List<Review> reviews;
+
+  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL) // One customer can buy many products
+  private List<Product> products;
 
   public Customer() {
   }

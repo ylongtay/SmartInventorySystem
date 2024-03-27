@@ -45,18 +45,22 @@ public class Review {
   private int rating;
 
   // @Min(value = 1, message = "Product ID should start from 1. ")
-  @Column(name = "product_id")
-  private long productId; // FK. PostgreSQL bigserial data type.
+  // @Column(name = "product_id") // Commented out as the review now is linked to
+  // product id
+  // private long productId; // FK. PostgreSQL bigserial data type.
 
   // @ManyToOne Customer -> Many Reviews can be linked to 1 Customer
   // @Min(value = 1, message = "Customer ID should start from 1. ")
+
   @JsonBackReference
   @ManyToOne(optional = false)
   @JoinColumn(name = "customer_id", referencedColumnName = "id")
   private Customer customer;
 
-  // @ManyToOne Product -> Many Reviews can be linked to 1 Product
-  // TODO
+  // @JsonBackReference
+  @ManyToOne(optional = false) // Many Reviews can be linked to 1 Product
+  @JoinColumn(name = "product_id", referencedColumnName = "id")
+  private Product product;
 
   public Review() {
   }
@@ -69,7 +73,7 @@ public class Review {
     this.reviewContent = reviewContent;
     this.rating = rating;
     // this.customerId = customerId;
-    this.productId = productId;
+    // this.productId = productId;
   }
 
 }

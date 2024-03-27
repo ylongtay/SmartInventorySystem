@@ -2,6 +2,8 @@ package sg.com.smartinventory.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -58,6 +61,16 @@ public class Product {
   // @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
   // @JoinColumn(name = "product_id", referencedColumnName = "id")
   // private List<Review> reviews;
+
+  @OneToMany(mappedBy = "product", cascade = CascadeType.ALL) // 1 Product can have many reviews by different customer
+  private List<Review> reviews;
+
+  @JsonBackReference
+  @ManyToOne(optional = true)
+  // Many products can be purchased by one customer, but association is optional,
+  // some product may not be purchased by 1 customer
+  @JoinColumn(name = "customer_id", referencedColumnName = "id")
+  private Customer customer;
 
   public Product() {
   }
