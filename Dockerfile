@@ -44,7 +44,8 @@ RUN ./mvnw clean install -DskipTests
 
 # The base image to package. 
 # FROM eclipse-temurin:21-jdk-jammy
-FROM eclipse-temurin:21-jdk-alpine
+# Eclipse Temurin project provides code and processes that support the building of runtime binaries - Docker image available in Docker Hub.
+FROM eclipse-temurin:21-jdk-alpine 
 
 # Run the Docker container as a non-root user with user privileges instead of root privileges, since it helps mitigate risks. 
 RUN addgroup deploymentgroup; adduser  --ingroup deploymentgroup --disabled-password deployment
