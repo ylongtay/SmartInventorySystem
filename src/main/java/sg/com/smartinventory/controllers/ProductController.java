@@ -4,10 +4,15 @@ import java.util.ArrayList;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
@@ -22,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/products")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
   private ProductService productService;
 
@@ -63,7 +69,7 @@ public class ProductController {
   }
 
   // READ (search by category)
-  @GetMapping("/search")
+  @GetMapping("/search/category")
   public ResponseEntity<ArrayList<Product>> searchCategory(@RequestParam String category) {
     ArrayList<Product> foundCategory = productService.searchProductCat(category);
     return new ResponseEntity<>(foundCategory, HttpStatus.OK);
