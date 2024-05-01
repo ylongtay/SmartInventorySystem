@@ -67,7 +67,7 @@ workflows:
           filters:
             branches:
               ignore:
-                - release
+                - release # All branch other than "release" will go through ci_flow
 
       - publish:
           requires:
