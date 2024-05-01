@@ -19,7 +19,7 @@ jobs:
           POSTGRES_USER: postgres
           # POSTGRES_PASSWORD: postgres
           POSTGRES_HOST_AUTH_METHOD: trust
-          POSTGRES_DB: smart_inventory
+          POSTGRES_DB: the_review_room
 
         # Set health checks to wait until Postgres has started.
         options: >-
@@ -39,7 +39,7 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v4.2.1
         with:
-          java-version: "17"
+          java-version: "21"
           distribution: "temurin"
           # Uncomment and configure if needed.
           # cache: maven
@@ -69,8 +69,8 @@ jobs:
       - name: Upload the generated application jar file artifact
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: smart-inventory-0.0.1-SNAPSHOT
-          path: target/smart-inventory-0.0.1-SNAPSHOT.jar
+          name: the-review-room-0.0.1-SNAPSHOT
+          path: target/the-review-room-0.0.1-SNAPSHOT.jar
           retention-days: 7
 
       - name: Upload the test report artifacts

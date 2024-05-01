@@ -29,9 +29,14 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### Byte-compiled / optimized / DLL files ###
+__pycache__/
+*.py[cod]
+
 ### VS Code ###
 .vscode/
 
 ### Generated Log Files ###
 src/main/java/sg/com/smartinventory/logfile
+src/main/java/sg/com/thereivewroom/logfile
 logs/**
