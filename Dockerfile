@@ -16,6 +16,7 @@ WORKDIR /opt/app
 # Copy the JAR file from the build context into the Docker image. 
 # COPY target/${JAR_FILE} application.jar
 
+#COPY instruction copies the Maven wrappers and pom file from the host machine to the container image
 COPY .mvn/ .mvn
 COPY mvnw pom.xml ./
 
