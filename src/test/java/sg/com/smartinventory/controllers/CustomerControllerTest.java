@@ -94,7 +94,7 @@ public class CustomerControllerTest {
                                 .andDo(print())
                                 .andExpect(status().isCreated())
                                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                                .andExpect(jsonPath("$.firstName").value("Jackie"))
+                                .andExpect(jsonPath("$.firstName").value("Jack"))
                                 .andExpect(jsonPath("$.lastName").value("Chan"));
 
                 test_logger.info("Ending test: " + getCurrentMethodName() + ". ");
